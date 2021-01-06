@@ -1,1 +1,1 @@
-# LCD-2x16-raspberry
+# LCDTemHum_RaspberryPI
