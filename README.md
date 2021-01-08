@@ -90,3 +90,20 @@ python3 char_lcd.py<br><br>
 # Third steps - run own code
 
 You may use my source code from this page.
+
+OK, if you use my own code, please let's me know how it's running. 
+If you change anything let's me know.
+
+# Automation
+You maybe setup automatic run script and show data on LCD, so, do this:
+
+crontab -l
+
+and now type this on last row:
+* * * * * python3 /home/pi/myLCD.py
+save file and reboot Raspberry Pi:
+sudo init 6 
+
+Now data will showing automatic after start Raspberry Pi. 
+
+Thanks for reading here.
