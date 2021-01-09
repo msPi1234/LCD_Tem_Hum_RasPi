@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
 # run as python3 myLCD.py
+
 # Created by https://github.com/msPi1234
 # Created in December 2020
 
-#libraries for time and date
+
+# Libraries for time and date
 import time
 import datetime
 
-#library for LCD char
+# Library for Garbage collector, delete memory
+import gc
+num=0
+
+# Library for LCD char
 import Adafruit_CharLCD as LCD
 
-#library for sensor DHT22
+# Library for sensor DHT22
 import Adafruit_DHT
 DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = 7 #4
 
-# Raspberry Pi pin setup
+# Raspberry Pi setup PIN
 lcd_rs = 25
 lcd_en = 24
 lcd_d4 = 23
@@ -33,17 +39,23 @@ lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_c
 while True:
     humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
     if humidity is not None and temperature is not None:
+	
+        lcd.clear()
+        text2=datetime.datetime.now()
+        lcd.message(text2.strftime("DATE: %Y-%m-%d\nTIME: %H:%M:%S"))
+        time.sleep(1)
+
+        lcd.clear()
         tem=(format(temperature))
         hum=(format(humidity))
         t=tem[0:5]
         h=hum[0:5]
-        text=("Temp: " + t + "\nHum: " + h + "\n")
+        text=("TEMP: " + t + "\nHUM:  " + h + "\n")
         lcd.message(text)
-        time.sleep(4.0)
-        lcd.clear()
-        now=datetime.datetime.now()
-        lcd.message(now.strftime("DATE:%Y-%m-%d\nTIME:%H:%M:%S\n"))
-        time.sleep(4.0)
-        lcd.clear()
+        time.sleep(1)
+
+        num=num+1
+        if num < 10:
+            gc.collect()
     else:
         print("Failed to retrieve data from humidity sensor")
