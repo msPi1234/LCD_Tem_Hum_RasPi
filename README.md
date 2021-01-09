@@ -97,10 +97,10 @@ If you change anything let's me know.
 # Automation
 You maybe setup automatic run script and show data on LCD, so, do this:
 
-crontab -l
+crontab -e
 
 and now type this on last row:
-* * * * * python3 /home/pi/myLCD.py
+five stars and python3 /home/pi/myLCD.py
 save file and reboot Raspberry Pi:
 sudo init 6 
 
