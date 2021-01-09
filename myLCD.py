@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # run as python3 myLCD.py
+# Created by https://github.com/msPi1234
+# Created in December 2020
 
 #libraries for time and date
 import time
